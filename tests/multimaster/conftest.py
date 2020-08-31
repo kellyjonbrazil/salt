@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 """
     tests.multimaster.conftest
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Multimaster PyTest prep routines
 """
-from __future__ import absolute_import, print_function, unicode_literals
 
 import logging
 import os
@@ -15,7 +13,6 @@ import pytest
 import salt.utils.files
 from salt.serializers import yaml
 from salt.utils.immutabletypes import freeze
-from tests.support.pytest.fixtures import *  # pylint: disable=unused-wildcard-import
 from tests.support.runtests import RUNTIME_VARS
 
 log = logging.getLogger(__name__)
