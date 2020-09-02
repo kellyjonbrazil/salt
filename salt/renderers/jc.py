@@ -49,7 +49,7 @@ def render(data, saltenv="base", sls="", parser=None, quiet=True, raw=False, **k
     try:
         jc_parser = importlib.import_module('jc.parsers.' + parser)
         result = jc_parser.parse(data, quiet=quiet, raw=raw)
-        return result if result.strip() else {}
+        return result
 
     except Exception as e:
         raise SaltRenderError('Error in jc renderer:  %s' % e)
