@@ -33,6 +33,10 @@ def __virtual__():
     return __virtualname__
 
 
+class OutputError(SaltRenderError):
+    pass
+
+
 def output(data, parser=None, **kwargs):
     """
     Convert returned command output to JSON using the JC library
@@ -42,11 +46,11 @@ def output(data, parser=None, **kwargs):
     parser = os.getenv('JC_PARSER')
 
     if not HAS_LIB:
-        raise SaltRenderError('You need to install "jc" prior to running the jc outputter')
+        raise OutputError('You need to install "jc" prior to running the jc outputter')
 
     if not parser:
-        raise SaltRenderError("You must specify a parser for the jc outputter by exporting the JC_PARSER env variable. "
-                              "e.g. export JC_PARSER='uptime'")
+        raise OutputError("You must specify a parser for the jc outputter by exporting the JC_PARSER env variable. "
+                          "e.g. export JC_PARSER='uptime'")
 
     try:
         jc_parser = importlib.import_module('jc.parsers.' + parser)
@@ -77,4 +81,4 @@ def output(data, parser=None, **kwargs):
         )
 
     except Exception as e:
-        raise SaltRenderError('Error in jc outputter:  %s' % e)
+        raise OutputError('Error in jc outputter:  %s' % e)
