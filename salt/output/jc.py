@@ -9,6 +9,8 @@ Requires Python >= 3.6
 Usage:
     This outputter requires a parser to be defined via the JC_PARSER env variable:
     $ JC_PARSER=uptime salt '*' cmd.run 'uptime' --out=jc --out-indent=2
+
+    For a list of supported parsers, see https://github.com/kellyjonbrazil/jc/tree/master/docs/parsers
 .. versionadded:: TBD
 """
 from __future__ import absolute_import, print_function, unicode_literals
