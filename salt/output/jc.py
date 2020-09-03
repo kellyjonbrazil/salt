@@ -48,13 +48,10 @@ def output(data, parser=None, **kwargs):
 
     try:
         jc_parser = importlib.import_module('jc.parsers.' + parser)
-        result = []
         for minion, output_data in data.items():
-            result.append(
-                {
-                    minion: jc_parser.parse(output_data, quiet=True)
-                }
-            )
+            result = {
+                minion: jc_parser.parse(output_data, quiet=True)
+            }
 
         if "output_indent" not in __opts__:
             return json.dumps(result)
@@ -63,16 +60,13 @@ def output(data, parser=None, **kwargs):
         sort_keys = False
 
         if indent is None:
-            print('indent is none')
             indent = None
 
         elif indent == "pretty":
-            print('indent is pretty')
-            indent = 4
+            indent = 2
             sort_keys = True
 
         elif isinstance(indent, int):
-            print('indent is INT')
             if indent < 0:
                 indent = None
 
