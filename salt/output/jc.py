@@ -8,7 +8,7 @@ Requires Python >= 3.6
 
 Usage:
     This outputter requires a parser to be defined via the JC_PARSER env variable:
-    $ JC_PARSER=uptime salt '*' cmd.run 'uptime' --out=jc
+    $ JC_PARSER=uptime salt '*' cmd.run 'uptime' --out=jc --out-indent=2
 .. versionadded:: TBD
 """
 from __future__ import absolute_import, print_function, unicode_literals
@@ -43,7 +43,7 @@ def output(data, parser=None, **kwargs):
         raise SaltRenderError('You need to install "jc" prior to running the jc outputter')
 
     if not parser:
-        raise SaltRenderError("You must specify a parser for the jc outputter by exporting the JC_PARSER env variable."
+        raise SaltRenderError("You must specify a parser for the jc outputter by exporting the JC_PARSER env variable. "
                               "e.g. export JC_PARSER='uptime'")
 
     try:
